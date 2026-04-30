@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Importação e Vendas</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f4f8;
+    color: #1a2332;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .page {
+    width: 420mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0a2240 0%, #1a4a7a 50%, #0d3a6e 100%);
+    padding: 18px 28px 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 300px; height: 150px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative; z-index: 1;
+  }
+
+  .header-left { flex: 1; }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,200,50,0.2);
+    border: 1px solid rgba(255,200,50,0.4);
+    color: #ffc832;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+  }
+
+  .header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .header h1 span { color: #4db8ff; }
+
+  .header-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  .header-icons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .icon-circle {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    font-size: 9px;
+    color: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 8px;
+  }
+
+  .header-meta span { display: flex; align-items: center; gap: 4px; }
+  .header-meta strong { color: rgba(255,255,255,0.8); }
+
+  .warning-bar {
+    background: #fff8e6;
+    border-bottom: 2px solid #ffc832;
+    padding: 5px 28px;
+    font-size: 9px;
+    color: #7a5c00;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* MAIN GRID */
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    padding: 14px 18px;
+    column-gap: 14px;
+    row-gap: 12px;
+  }
+
+  /* SECTION CARDS */
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    break-inside: avoid;
+  }
+
+  .card-full { grid-column: 1 / -1; }
+  .card-half { grid-column: span 1; }
+  .card-two { grid-column: span 2; }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .card-icon {
+    width: 26px; height: 26px;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .card-num {
+    margin-left: auto;
+    font-size: 9px;
+    font-weight: 600;
+    opacity: 0.4;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .card-body { padding: 10px 12px; }
+
+  /* COLOR THEMES */
+  .theme-blue .card-header { background: #e6f1fb; }
+  .theme-blue .card-icon { background: #185fa5; color: #fff; }
+  .theme-blue .card-title { color: #0c447c; }
+
+  .theme-navy .card-header { background: #0a2240; }
+  .theme-navy .card-icon { background: rgba(255,255,255,0.15); color: #fff; }
+  .theme-navy .card-title { color: #fff; }
+  .theme-navy .card-num { color: rgba(255,255,255,0.4); opacity: 1; }
+
+  .theme-teal .card-header { background: #e1f5ee; }
+  .theme-teal .card-icon { background: #0f6e56; color: #fff; }
+  .theme-teal .card-title { color: #085041; }
+
+  .theme-amber .card-header { background: #faeeda; }
+  .theme-amber .card-icon { background: #854f0b; color: #fff; }
+  .theme-amber .card-title { color: #633806; }
+
+  .theme-red .card-header { background: #fcebeb; }
+  .theme-red .card-icon { background: #a32d2d; color: #fff; }
+  .theme-red .card-title { color: #791f1f; }
+
+  .theme-purple .card-header { background: #eeedfe; }
+  .theme-purple .card-icon { background: #534ab7; color: #fff; }
+  .theme-purple .card-title { color: #3c3489; }
+
+  .theme-green .card-header { background: #eaf3de; }
+  .theme-green .card-icon { background: #3b6d11; color: #fff; }
+  .theme-green .card-title { color: #27500a; }
+
+  .theme-coral .card-header { background: #faece7; }
+  .theme-coral .card-icon { background: #993c1d; color: #fff; }
+  .theme-coral .card-title { color: #712b13; }
+
+  /* ITEMS */
+  .item {
+    display: flex;
+    gap: 6px;
+    padding: 4px 0;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: flex-start;
+  }
+
+  .item:last-child { border-bottom: none; }
+
+  .item-num {
+    font-size: 9px;
+    font-weight: 700;
+    color: #94a3b8;
+    min-width: 22px;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  .item-text {
+    font-size: 10px;
+    color: #334155;
+    line-height: 1.4;
+  }
+
+  .item-text strong {
+    color: #1a2332;
+    font-weight: 600;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    margin: 1px 2px 1px 0;
+  }
+
+  .tag-blue { background: #e6f1fb; color: #185fa5; }
+  .tag-red { background: #fcebeb; color: #a32d2d; }
+  .tag-green { background: #eaf3de; color: #3b6d11; }
+  .tag-amber { background: #faeeda; color: #854f0b; }
+  .tag-navy { background: #0a2240; color: #fff; }
+  .tag-teal { background: #e1f5ee; color: #0f6e56; }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5px;
+  }
+
+  th {
+    background: #f8fafc;
+    color: #64748b;
+    font-weight: 600;
+    padding: 5px 7px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  td {
+    padding: 5px 7px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  td strong { color: #1a2332; font-weight: 600; }
+
+  /* HIGHLIGHT BOXES */
+  .highlight {
+    border-radius: 7px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    font-size: 9.5px;
+  }
+
+  .highlight-blue { background: #e6f1fb; border-left: 3px solid #185fa5; }
+  .highlight-amber { background: #faeeda; border-left: 3px solid #854f0b; }
+  .highlight-green { background: #eaf3de; border-left: 3px solid #3b6d11; }
+  .highlight-red { background: #fcebeb; border-left: 3px solid #a32d2d; }
+  .highlight-teal { background: #e1f5ee; border-left: 3px solid #0f6e56; }
+
+  .highlight p { color: #334155; line-height: 1.5; }
+  .highlight strong { font-weight: 600; color: #1a2332; }
+
+  /* FORMULA BOX */
+  .formula {
+    background: #0a2240;
+    color: #fff;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.2px;
+    margin: 6px 0;
+    line-height: 1.6;
+  }
+
+  .formula span { color: #4db8ff; }
+
+  /* LIMIT PILLS */
+  .limits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .limit-pill {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 7px 9px;
+    text-align: center;
+  }
+
+  .limit-pill .val {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: #0a2240;
+    line-height: 1.1;
+  }
+
+  .limit-pill .val-sub {
+    font-size: 8.5px;
+    font-weight: 600;
+    color: #185fa5;
+  }
+
+  .limit-pill .lbl {
+    font-size: 8.5px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  /* SIMPLES TABLE */
+  .simples-table { width: 100%; border-collapse: collapse; font-size: 9.5px; }
+  .simples-table th {
+    background: #0a2240;
+    color: rgba(255,255,255,0.7);
+    padding: 5px 7px;
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  .simples-table td {
+    padding: 5px 7px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 9.5px;
+  }
+
+  .faixa-me { background: #e6f1fb; }
+  .faixa-epp { background: #fff; }
+
+  .badge-me {
+    display: inline-block;
+    background: #185fa5;
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .badge-epp {
+    display: inline-block;
+    background: #0f6e56;
+    color: #fff;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* RADAR TABLE */
+  .radar-table { width: 100%; border-collapse: collapse; font-size: 9.5px; }
+  .radar-table th { background: #0a2240; color: rgba(255,255,255,0.7); padding: 5px 7px; font-size: 8.5px; text-transform: uppercase; }
+  .radar-table td { padding: 5px 7px; border-bottom: 1px solid #f1f5f9; }
+
+  /* ML GRID */
+  .ml-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 4px; }
+
+  .ml-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+
+  .ml-card .ml-tipo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .ml-card .ml-pct {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .ml-card .ml-det {
+    font-size: 8.5px;
+    color: #64748b;
+    line-height: 1.4;
+  }
+
+  .ml-classico .ml-tipo { color: #185fa5; }
+  .ml-classico .ml-pct { color: #185fa5; }
+  .ml-classico { border-top: 3px solid #185fa5; }
+
+  .ml-premium .ml-tipo { color: #0f6e56; }
+  .ml-premium .ml-pct { color: #0f6e56; }
+  .ml-premium { border-top: 3px solid #0f6e56; }
+
+  /* DOCS GRID */
+  .docs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-top: 4px;
+  }
+
+  .doc-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 7px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 9px;
+    color: #334155;
+  }
+
+  .doc-item .doc-icon {
+    width: 20px; height: 20px;
+    border-radius: 4px;
+    background: #185fa5;
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  .doc-item .doc-info { line-height: 1.3; }
+  .doc-item .doc-name { font-weight: 600; font-size: 9px; color: #1a2332; }
+  .doc-item .doc-sub { font-size: 8px; color: #64748b; }
+
+  /* PAYMENT ITEMS */
+  .pay-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .pay-item:last-child { border-bottom: none; }
+
+  .pay-icon {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    background: #0a2240;
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .pay-name { font-size: 10px; font-weight: 600; color: #1a2332; }
+  .pay-desc { font-size: 8.5px; color: #64748b; }
+
+  /* ICMS BOX */
+  .icms-formula {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 6px 0;
+    text-align: center;
+  }
+
+  .icms-formula .icms-top { font-size: 9px; color: #64748b; margin-bottom: 4px; }
+  .icms-formula .icms-eq {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0a2240;
+  }
+
+  .icms-formula .icms-eq span { color: #185fa5; }
+  .icms-formula .icms-note { font-size: 8.5px; color: #64748b; margin-top: 4px; }
+
+  /* REPUTACAO */
+  .rep-bar {
+    display: flex;
+    gap: 3px;
+    margin: 8px 0 4px;
+  }
+
+  .rep-pill {
+    flex: 1;
+    padding: 5px 4px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 8px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .rep-cinza { background: #94a3b8; }
+  .rep-vermelho { background: #dc2626; }
+  .rep-laranja { background: #ea580c; }
+  .rep-amarelo { background: #ca8a04; }
+  .rep-verde-claro { background: #16a34a; }
+  .rep-verde-escuro { background: #14532d; }
+
+  /* MEDALHAS */
+  .medalhas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    margin-top: 6px;
+  }
+
+  .medalha {
+    border-radius: 7px;
+    padding: 6px 7px;
+    text-align: center;
+  }
+
+  .medalha-1 { background: #e6f1fb; border: 1px solid #b5d4f4; }
+  .medalha-2 { background: #faeeda; border: 1px solid #fac775; }
+  .medalha-3 { background: #f1eef8; border: 1px solid #afa9ec; }
+
+  .medalha .m-icon { font-size: 16px; }
+  .medalha .m-name { font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 700; color: #1a2332; margin: 2px 0; }
+  .medalha .m-val { font-size: 7.5px; color: #64748b; line-height: 1.4; }
+
+  /* FULL SECTION */
+  .full-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-top: 5px;
+  }
+
+  .full-item {
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 6px 8px;
+    font-size: 9px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .full-item .full-label { color: #64748b; font-size: 8px; text-transform: uppercase; font-weight: 600; letter-spacing: 0.3px; }
+  .full-item .full-val { font-weight: 600; color: #1a2332; margin-top: 1px; }
+
+  /* FOOTER */
+  .footer {
+    background: #0a2240;
+    padding: 8px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+
+  .footer-left {
+    font-size: 8.5px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-left strong { color: rgba(255,255,255,0.8); }
+
+  .footer-right {
+    font-size: 8px;
+    color: rgba(255,255,255,0.4);
+    text-align: right;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: #f1f5f9;
+    margin: 5px 0;
+  }
+
+  .obs {
+    font-size: 8.5px;
+    color: #64748b;
+    line-height: 1.4;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px dashed #e2e8f0;
+  }
+
+  .obs strong { color: #334155; }
+
+  @media print {
+    body { background: white; }
+    .page { width: 420mm; margin: 0; box-shadow: none; }
+    @page { size: A3 landscape; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="header-badge">✦ Material de Referência Pessoal</div>
+        <h1>GUIA DE <span>IMPORTAÇÃO</span> E VENDAS<br>E-COMMERCE</h1>
+        <div class="header-sub">Impostos · Custos · Documentos · Taxas · Mercado Livre · MEI · ME · EPP</div>
+        <div class="header-meta">
+          <span>✍ <strong>Mozar Lacerda de Menezes</strong></span>
+          <span>📅 <strong>Abril/2026</strong></span>
+          <span>📍 <strong>Campo Grande/MS — Empresa em Jundiaí/SP</strong></span>
+        </div>
+      </div>
+      <div class="header-icons">
+        <div class="icon-circle">🚢</div>
+        <div class="icon-circle">✈️</div>
+        <div class="icon-circle">📦</div>
+        <div class="icon-circle">🛒</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-bar">
+    ⚠️ <strong>Atenção:</strong> As informações devem ser revisadas periodicamente — alíquotas, limites e regras podem ser alterados pelo Governo Federal, Receita Federal e plataformas.
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="main">
+
+    <!-- 1. VALOR ADUANEIRO (CIF) -->
+    <div class="card theme-blue card-half">
+      <div class="card-header">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Valor Aduaneiro (CIF)</div>
+        <div class="card-num">01</div>
+      </div>
+      <div class="card-body">
+        <div class="item"><div class="item-num">1.1</div><div class="item-text"><strong>Valor do produto</strong></div></div>
+        <div class="item"><div class="item-num">1.2</div><div class="item-text"><strong>Frete</strong> — courier: consultar site; marítimo: agente de cargas</div></div>
+        <div class="item"><div class="item-num">1.3</div><div class="item-text"><strong>Seguro</strong></div></div>
+        <div class="item"><div class="item-num">1.4</div><div class="item-text">Quaisquer outros valores até o produto chegar ao Brasil</div></div>
+        <div class="highlight highlight-blue" style="margin-top:6px;">
+          <p><strong>CIF</strong> = Cost + Insurance + Freight. Essa soma é a <strong>BASE DE CÁLCULO</strong> de todos os impostos de importação.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. MOEDA -->
+    <div class="card theme-amber card-half">
+      <div class="card-header">
+        <div class="card-icon">💵</div>
+        <div class="card-title">Moeda</div>
+        <div class="card-num">02</div>
+      </div>
+      <div class="card-body">
+        <div style="text-align:center; padding: 6px 0;">
+          <div style="font-family: Montserrat; font-size: 28px; font-weight: 900; color: #0a2240;">USD</div>
+          <div style="font-size: 9px; color: #64748b; margin-top: 2px;">Dólar Americano</div>
+        </div>
+        <div class="item"><div class="item-num">2.1</div><div class="item-text">Sempre <strong>dólar americano (USD)</strong> para fins aduaneiros e limites da Receita Federal — independente do país de origem</div></div>
+        <div class="obs"><strong>Obs.:</strong> Fornecedor pode faturar em euro ou yuan, mas a Receita Federal converte tudo para USD pela <strong>taxa PTAX</strong> do Banco Central na data do registro.</div>
+      </div>
+    </div>
+
+    <!-- 3. DOCUMENTOS -->
+    <div class="card theme-navy card-half">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Documentos na Importação</div>
+        <div class="card-num">03</div>
+      </div>
+      <div class="card-body">
+        <div class="docs-grid">
+          <div class="doc-item">
+            <div class="doc-icon">📄</div>
+            <div class="doc-info">
+              <div class="doc-name">Proforma Invoice</div>
+              <div class="doc-sub">Cotação / proposta</div>
+            </div>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🧾</div>
+            <div class="doc-info">
+              <div class="doc-name">Commercial Invoice</div>
+              <div class="doc-sub">Fatura = NF Brasileira</div>
+            </div>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">📦</div>
+            <div class="doc-info">
+              <div class="doc-name">Packing List</div>
+              <div class="doc-sub">Romaneio do remetente</div>
+            </div>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">✈️</div>
+            <div class="doc-info">
+              <div class="doc-name">AWB — Air Waybill</div>
+              <div class="doc-sub">Embarque aéreo</div>
+            </div>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🚢</div>
+            <div class="doc-info">
+              <div class="doc-name">BL — Bill of Lading</div>
+              <div class="doc-sub">Embarque marítimo</div>
+            </div>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🏛️</div>
+            <div class="doc-info">
+              <div class="doc-name">DI / DUIMP</div>
+              <div class="doc-sub">Emitida pelo despachante</div>
+            </div>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">📮</div>
+            <div class="doc-info">
+              <div class="doc-name">DSI</div>
+              <div class="doc-sub">Emitida pelo courier</div>
+            </div>
+          </div>
+          <div class="doc-item">
+            <div class="doc-icon">🪪</div>
+            <div class="doc-info">
+              <div class="doc-name">LI</div>
+              <div class="doc-sub">Produtos certificados</div>
+            </div>
+          </div>
+        </div>
+        <div class="obs" style="margin-top:5px;"><strong>Contrato de Câmbio:</strong> obrigatório em pagamentos via banco (TT/Swift). Dispensado no Alibaba Trade Assurance.</div>
+      </div>
+    </div>
+
+    <!-- 4. PAGAMENTOS -->
+    <div class="card theme-teal card-half">
+      <div class="card-header">
+        <div class="card-icon">💳</div>
+        <div class="card-title">Pagamentos na Importação</div>
+        <div class="card-num">04</div>
+      </div>
+      <div class="card-body">
+        <div class="pay-item">
+          <div class="pay-icon">🏦</div>
+          <div>
+            <div class="pay-name">TT — Telegraphic Transfer</div>
+            <div class="pay-desc">Banco do importador via Swift (Bradesco, Itaú, BB etc.) — tradicional</div>
+          </div>
+        </div>
+        <div class="pay-item">
+          <div class="pay-icon">💱</div>
+          <div>
+            <div class="pay-name">Corretoras de Câmbio</div>
+            <div class="pay-desc">Remessa Online, Wise, Western Union — spread geralmente menor</div>
+          </div>
+        </div>
+        <div class="pay-item">
+          <div class="pay-icon">🛡️</div>
+          <div>
+            <div class="pay-name">Alibaba Trade Assurance</div>
+            <div class="pay-desc">Pagamento dentro da plataforma — dispensa contrato de câmbio bancário</div>
+          </div>
+        </div>
+        <div class="pay-item">
+          <div class="pay-icon">💳</div>
+          <div>
+            <div class="pay-name">Cartão de Crédito Internacional</div>
+            <div class="pay-desc">AliExpress e plataformas — para valores menores</div>
+          </div>
+        </div>
+        <div class="pay-item">
+          <div class="pay-icon">🅿️</div>
+          <div>
+            <div class="pay-name">PayPal</div>
+            <div class="pay-desc">Alguns fornecedores — taxas de conversão mais altas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. IMPORTAÇÃO SIMPLIFICADA -->
+    <div class="card theme-blue card-two">
+      <div class="card-header">
+        <div class="card-icon">✈️</div>
+        <div class="card-title">Importação Simplificada — RTS (Regime de Tributação Simplificada)</div>
+        <div class="card-num">05</div>
+      </div>
+      <div class="card-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <div>
+            <div class="item"><div class="item-num">5.1</div><div class="item-text"><span class="tag tag-blue">Modal</span> Somente <strong>aéreo</strong> — DHL, FedEx, UPS, Correios</div></div>
+            <div class="item"><div class="item-num">5.2</div><div class="item-text"><span class="tag tag-navy">Doc</span> <strong>DSI</strong> — emitida pelo courier</div></div>
+            <div class="item"><div class="item-num">5.3</div><div class="item-text"><span class="tag tag-red">II</span> <strong>60% fixo</strong> sobre valor aduaneiro (CIF)</div></div>
+            <div class="item"><div class="item-num">5.4</div><div class="item-text">IPI, PIS e COFINS <strong>não cobrados separadamente</strong> — embutidos no II de 60%</div></div>
+            <div class="item"><div class="item-num">5.5</div><div class="item-text">Não exige Radar Siscomex nem despachante</div></div>
+          </div>
+          <div>
+            <div class="limits-grid">
+              <div class="limit-pill">
+                <div class="val">US$<br>3.000</div>
+                <div class="val-sub">por remessa</div>
+                <div class="lbl">Limite máximo CIF</div>
+              </div>
+              <div class="limit-pill">
+                <div class="val">US$<br>50.000</div>
+                <div class="val-sub">por semestre</div>
+                <div class="lbl">Radar Siscomex Expresso</div>
+              </div>
+            </div>
+            <div class="highlight highlight-amber" style="margin-top:7px;">
+              <p><strong>II de 60% fixo</strong> independente do produto e do país de origem (China = Itália = EUA). Principal diferença da formal, onde o II varia por NCM.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. ICMS SP -->
+    <div class="card theme-red card-half">
+      <div class="card-header">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">ICMS/SP na Importação</div>
+        <div class="card-num">06</div>
+      </div>
+      <div class="card-body">
+        <div class="icms-formula">
+          <div class="icms-top">Base de cálculo "por dentro" — SP = 18%</div>
+          <div class="icms-eq">(CIF + II + IPI + PIS + COFINS + despesas) <span>÷ 0,82</span> × 18%</div>
+          <div class="icms-note">Equivalente a dividir por 0,82 (= 1 − 0,18)</div>
+        </div>
+        <div class="highlight highlight-blue">
+          <p><strong>Simplificada:</strong> (CIF + II 60%) ÷ 0,82 × 18%<br>
+          <strong>Formal:</strong> (CIF + II + IPI + PIS + COFINS + despesas) ÷ 0,82 × 18%</p>
+        </div>
+        <div class="obs"><strong>Vale para todos:</strong> MEI, ME, EPP, Simples, Presumido, Real — e para ambas as modalidades (simplificada e formal).</div>
+      </div>
+    </div>
+
+    <!-- 7 e 8. MEI -->
+    <div class="card theme-purple card-half">
+      <div class="card-header">
+        <div class="card-icon">👤</div>
+        <div class="card-title">MEI — Limites e Impostos</div>
+        <div class="card-num">07/08</div>
+      </div>
+      <div class="card-body">
+        <div class="limits-grid" style="margin-bottom: 7px;">
+          <div class="limit-pill">
+            <div class="val">R$ 81k</div>
+            <div class="val-sub">/ano</div>
+            <div class="lbl">Faturamento (ref. R$ 6.750/mês)</div>
+          </div>
+          <div class="limit-pill">
+            <div class="val">R$ 64,8k</div>
+            <div class="val-sub">/ano</div>
+            <div class="lbl">Compras 80% (ref. R$ 5.400/mês)</div>
+          </div>
+        </div>
+        <div class="highlight highlight-teal">
+          <p><strong>DAS-MEI Comércio: R$ 82,05/mês</strong> — vence todo dia 20.<br>
+          INSS R$ 81,05 + ICMS R$ 1,00 · Isento: IRPJ, PIS, COFINS, IPI, CSLL.<br>
+          Não importa quantas NF emitidas — valor fixo sempre.</p>
+        </div>
+        <div class="obs"><strong>Obs.:</strong> Limite de 80% nas compras não está em lei federal — é critério fiscal. Compras de importação incluem produto + frete + seguro + impostos + taxas.</div>
+      </div>
+    </div>
+
+    <!-- 12. IMPORTAÇÃO FORMAL — IMPOSTOS -->
+    <div class="card theme-coral card-two">
+      <div class="card-header">
+        <div class="card-icon">🚢</div>
+        <div class="card-title">Importação Formal — Impostos na Nacionalização (ME e EPP)</div>
+        <div class="card-num">12</div>
+      </div>
+      <div class="card-body">
+        <table>
+          <tr>
+            <th>Imposto</th>
+            <th>Base de Cálculo</th>
+            <th>Alíquota</th>
+          </tr>
+          <tr>
+            <td><strong>II</strong> — Imposto de Importação</td>
+            <td>Valor aduaneiro (CIF)</td>
+            <td><span class="tag tag-red">Varia por NCM</span> 0%, 10%, 20%... não é fixo</td>
+          </tr>
+          <tr>
+            <td><strong>IPI</strong> — Imp. sobre Produtos Industrializados</td>
+            <td>CIF + II</td>
+            <td><span class="tag tag-red">Varia por NCM</span> 0% a +300%</td>
+          </tr>
+          <tr>
+            <td><strong>PIS-Importação</strong></td>
+            <td>Valor aduaneiro</td>
+            <td><strong>2,10%</strong></td>
+          </tr>
+          <tr>
+            <td><strong>COFINS-Importação</strong></td>
+            <td>Valor aduaneiro</td>
+            <td><strong>9,65%</strong></td>
+          </tr>
+          <tr>
+            <td><strong>ICMS</strong> — SP/Jundiaí</td>
+            <td>CIF + II + IPI + PIS + COFINS + despesas (por dentro)</td>
+            <td><strong>18% ÷ 0,82</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Taxa Siscomex</strong></td>
+            <td>Por processo</td>
+            <td>R$ 115,67/DI + R$ 38,56/adição</td>
+          </tr>
+          <tr>
+            <td><strong>AFRMM</strong></td>
+            <td>Valor do frete marítimo</td>
+            <td><strong>25%</strong> (somente marítimo)</td>
+          </tr>
+        </table>
+        <div class="obs" style="margin-top:5px;"><strong>ME/EPP no Simples Nacional:</strong> nenhum tributo pago na importação pode ser recuperado como crédito — tudo vira custo. Somente <strong>Lucro Presumido e Lucro Real</strong> recuperam créditos de ICMS, IPI, PIS e COFINS. O II nunca é recuperável em nenhum regime.</div>
+      </div>
+    </div>
+
+    <!-- 9. PREP CENTER -->
+    <div class="card theme-green card-half">
+      <div class="card-header">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Prep Center — São Paulo</div>
+        <div class="card-num">09</div>
+      </div>
+      <div class="card-body">
+        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+          <div class="limit-pill" style="flex:1;">
+            <div class="val" style="font-size:18px;">R$ 2</div>
+            <div class="lbl">Por unidade simples</div>
+          </div>
+          <div class="limit-pill" style="flex:1;">
+            <div class="val" style="font-size:18px;">R$ 3</div>
+            <div class="lbl">Por kit</div>
+          </div>
+          <div class="limit-pill" style="flex:1;">
+            <div class="val" style="font-size:18px;">R$ 4</div>
+            <div class="lbl">Motoboy/dia (único)</div>
+          </div>
+        </div>
+        <div class="highlight highlight-green">
+          <p>Preparação, embalagem e entrega nos pontos de coleta do Mercado Livre.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. FORMAL vs SIMPLIFICADA + RADAR -->
+    <div class="card theme-navy card-half">
+      <div class="card-header">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Importação Formal — Diferenças</div>
+        <div class="card-num">13</div>
+      </div>
+      <div class="card-body">
+        <div class="item"><div class="item-num">▸</div><div class="item-text"><strong>Despachante aduaneiro</strong> obrigatório (R$ 500–R$ 2.000/processo)</div></div>
+        <div class="item"><div class="item-num">▸</div><div class="item-text"><strong>Radar Siscomex</strong> obrigatório</div></div>
+        <div class="item"><div class="item-num">▸</div><div class="item-text">Modal <strong>aéreo ou marítimo</strong></div></div>
+        <div class="item"><div class="item-num">▸</div><div class="item-text">Documento: <strong>DI / DUIMP</strong> (DUIMP obrigatória em SP desde abr/2026)</div></div>
+        <div class="item"><div class="item-num">▸</div><div class="item-text">II <strong>varia por NCM</strong> — pode ser menor que 60% da simplificada</div></div>
+        <div style="margin-top: 6px;">
+          <table class="radar-table">
+            <tr><th>Radar</th><th>Limite</th></tr>
+            <tr><td><strong>Expressa</strong> (automática MEI/ME)</td><td>US$ 50.000/semestre</td></tr>
+            <tr><td><strong>Limitada</strong></td><td>US$ 150.000/semestre</td></tr>
+            <tr><td><strong>Ilimitada</strong></td><td>Exige comprovação financeira</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. SIMPLES NACIONAL -->
+    <div class="card theme-teal card-two">
+      <div class="card-header">
+        <div class="card-icon">📊</div>
+        <div class="card-title">ME e EPP — Simples Nacional Anexo I (Comércio) — Impostos sobre Vendas</div>
+        <div class="card-num">11</div>
+      </div>
+      <div class="card-body">
+        <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 10px;">
+          <div>
+            <table class="simples-table">
+              <tr>
+                <th>Faixa</th>
+                <th>Regime</th>
+                <th>Receita 12 meses</th>
+                <th>Alíquota Nominal</th>
+                <th>Parcela Deduzir</th>
+              </tr>
+              <tr class="faixa-me">
+                <td>1ª</td>
+                <td><span class="badge-me">ME</span></td>
+                <td>Até R$ 180.000</td>
+                <td><strong>4,00%</strong></td>
+                <td>—</td>
+              </tr>
+              <tr class="faixa-me">
+                <td>2ª</td>
+                <td><span class="badge-me">ME</span></td>
+                <td>Até R$ 360.000</td>
+                <td><strong>7,30%</strong></td>
+                <td>R$ 5.940,00</td>
+              </tr>
+              <tr class="faixa-epp">
+                <td>3ª</td>
+                <td><span class="badge-epp">EPP</span></td>
+                <td>Até R$ 720.000</td>
+                <td><strong>9,50%</strong></td>
+                <td>R$ 13.860,00</td>
+              </tr>
+              <tr class="faixa-epp">
+                <td>4ª</td>
+                <td><span class="badge-epp">EPP</span></td>
+                <td>Até R$ 1.800.000</td>
+                <td><strong>10,70%</strong></td>
+                <td>R$ 22.500,00</td>
+              </tr>
+              <tr class="faixa-epp">
+                <td>5ª</td>
+                <td><span class="badge-epp">EPP</span></td>
+                <td>Até R$ 3.600.000</td>
+                <td><strong>14,30%</strong></td>
+                <td>R$ 87.300,00</td>
+              </tr>
+              <tr class="faixa-epp">
+                <td>6ª</td>
+                <td><span class="badge-epp">EPP</span></td>
+                <td>Até R$ 4.800.000</td>
+                <td><strong>19,00%</strong></td>
+                <td>R$ 378.000,00</td>
+              </tr>
+            </table>
+          </div>
+          <div>
+            <div class="formula">
+              ALÍQUOTA EFETIVA<br>
+              <span>(RBT12 × alíq. nominal<br>− parcela deduzir)<br>÷ RBT12</span>
+            </div>
+            <div class="highlight highlight-teal" style="margin-top:6px;">
+              <p>✓ DAS vence todo dia <strong>20</strong><br>
+              ✓ Exige <strong>contador</strong><br>
+              ✓ ICMS vendas <strong>incluso</strong> no DAS<br>
+              ✗ ICMS importação pago <strong>separado</strong><br>
+              ✗ <strong>Não recupera</strong> créditos de importação</p>
+            </div>
+            <div class="obs">Sistema PGDAS-D calcula automaticamente.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. MERCADO LIVRE -->
+    <div class="card theme-amber card-two">
+      <div class="card-header">
+        <div class="card-icon">🛒</div>
+        <div class="card-title">Taxas Mercado Livre</div>
+        <div class="card-num">10</div>
+      </div>
+      <div class="card-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+          <div>
+            <div class="ml-grid">
+              <div class="ml-card ml-classico">
+                <div class="ml-tipo">Clássico</div>
+                <div class="ml-pct">10–14%</div>
+                <div class="ml-det">Alta exposição · Ilimitado · Sem parcelamento sem juros</div>
+              </div>
+              <div class="ml-card ml-premium">
+                <div class="ml-tipo">Premium</div>
+                <div class="ml-pct">15–19%</div>
+                <div class="ml-det">Máxima exposição · Ilimitado · Até 10x sem juros</div>
+              </div>
+            </div>
+            <div class="obs" style="margin-top:6px;"><strong>Grátis:</strong> 0% · 60 dias · sem parcelamento · baixa exposição</div>
+          </div>
+          <div>
+            <div class="highlight highlight-blue">
+              <p><strong>Custo fixo por unidade:</strong><br>
+              Abaixo R$ 12,50 → 50% do valor<br>
+              R$ 12,50 a R$ 79 → faixas variáveis<br>
+              <strong>Acima R$ 79 → sem custo fixo</strong></p>
+            </div>
+            <div class="highlight highlight-red" style="margin-top:5px;">
+              <p><strong>Frete grátis obrigatório</strong> acima de R$ 79. Quem paga: <strong>você (vendedor)</strong>. ML desconta do repasse.<br>
+              Reserve <strong>10% a 15%</strong> do preço como estimativa de frete.</p>
+            </div>
+          </div>
+          <div>
+            <div class="formula" style="font-size: 9px;">
+              FÓRMULA DE PRECIFICAÇÃO<br><br>
+              <span>Preço = Custo produto<br>+ Comissão ML<br>+ Frete estimado<br>+ Impostos<br>+ Margem de lucro</span>
+            </div>
+            <div class="obs" style="margin-top: 5px;"><strong>Ads (CPC):</strong> não obrigatório, mas necessário no início para gerar vendas e reputação. Inclua no custo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. REPUTAÇÃO ML -->
+    <div class="card theme-green card-half">
+      <div class="card-header">
+        <div class="card-icon">⭐</div>
+        <div class="card-title">Reputação Mercado Livre</div>
+        <div class="card-num">15</div>
+      </div>
+      <div class="card-body">
+        <div class="rep-bar">
+          <div class="rep-pill rep-cinza">Cinza<br>&lt;10 vendas</div>
+          <div class="rep-pill rep-vermelho">Vermelho<br>Ruim</div>
+          <div class="rep-pill rep-laranja">Laranja<br>Baixo</div>
+          <div class="rep-pill rep-amarelo">Amarelo<br>Médio</div>
+          <div class="rep-pill rep-verde-claro">Verde<br>Claro</div>
+          <div class="rep-pill rep-verde-escuro">Verde<br>Escuro ★</div>
+        </div>
+        <div class="obs" style="margin-bottom:5px;">Verde escuro exclusivo para MercadoLíder.</div>
+        <div class="medalhas">
+          <div class="medalha medalha-1">
+            <div class="m-icon">🥇</div>
+            <div class="m-name">MercadoLíder</div>
+            <div class="m-val">230 vendas<br>R$ 37.000 fat.</div>
+          </div>
+          <div class="medalha medalha-2">
+            <div class="m-icon">🥇</div>
+            <div class="m-name">Gold</div>
+            <div class="m-val">450 vendas<br>R$ 200.000 fat.</div>
+          </div>
+          <div class="medalha medalha-3">
+            <div class="m-icon">🏆</div>
+            <div class="m-name">Platinum</div>
+            <div class="m-val">1.725 vendas<br>R$ 296.000 fat.</div>
+          </div>
+        </div>
+        <div class="obs" style="margin-top:5px;">Reputação verde = desconto até <strong>70% no frete</strong>, mais visibilidade, recebimento em <strong>2 dias</strong> após entrega.</div>
+      </div>
+    </div>
+
+    <!-- 16. FULL -->
+    <div class="card theme-blue card-half">
+      <div class="card-header">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Mercado Envios Full — Requisitos</div>
+        <div class="card-num">16</div>
+      </div>
+      <div class="card-body">
+        <div class="full-grid">
+          <div class="full-item">
+            <div class="full-label">Reputação</div>
+            <div class="full-val">Termômetro verde obrigatório</div>
+          </div>
+          <div class="full-item">
+            <div class="full-label">Fiscal</div>
+            <div class="full-val">CNPJ ativo + NF-e regulares</div>
+          </div>
+          <div class="full-item">
+            <div class="full-label">Peso máx.</div>
+            <div class="full-val">25 kg por unidade</div>
+          </div>
+          <div class="full-item">
+            <div class="full-label">Dimensão</div>
+            <div class="full-val">Soma lados ≤ 260cm · maior ≤ 120cm</div>
+          </div>
+        </div>
+        <div class="highlight highlight-blue" style="margin-top:6px;">
+          <p>✓ Entrega 1–2 dias · Selo Full · Mais visibilidade<br>
+          ✓ ML embala e despacha · Frete mais barato<br>
+          ✓ Vendedores de qualquer região podem usar<br>
+          ✗ Parado +4 meses: R$ 2/un · Retirada: R$ 4/un</p>
+        </div>
+        <div class="obs">Solicitar via painel do vendedor → Mercado Envios Full → formulário de interesse.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">
+      <strong>Mozar Lacerda de Menezes</strong> · Campo Grande/MS · Empresa em Jundiaí/SP
+    </div>
+    <div class="footer-right">
+      Guia de Importação e Vendas E-Commerce · Abril/2026<br>
+      Material de referência pessoal · Revisão periódica recomendada
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
