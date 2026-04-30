@@ -41,7 +41,8 @@
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px;
+    scroll-padding-top: 100px; }
 
     body {
       font-family: 'Montserrat', sans-serif;
@@ -130,6 +131,89 @@
     }
 
     .nav-calc:hover { background: rgba(255,200,50,0.3) !important; }
+
+    .nav-radar {
+      background: rgba(15,110,86,0.25) !important;
+      border: 1px solid rgba(15,110,86,0.5) !important;
+      color: #5de8be !important;
+    }
+
+    .nav-radar:hover { background: rgba(15,110,86,0.4) !important; color: #fff !important; }
+
+    .nav-prep {
+      background: rgba(59,109,17,0.25) !important;
+      border: 1px solid rgba(59,109,17,0.5) !important;
+      color: #9de05a !important;
+    }
+
+    .nav-prep:hover { background: rgba(59,109,17,0.4) !important; color: #fff !important; }
+
+    /* ── NAV SECOND ROW for quick-access pills ── */
+    .nav-quickbar {
+      background: rgba(0,0,0,0.25);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-quickbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 36px;
+    }
+
+    .nav-quickbar-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding-right: 8px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-quickbar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+
+    .qb-radar {
+      background: rgba(15,110,86,0.2);
+      border: 1px solid rgba(15,110,86,0.45);
+      color: #5de8be;
+    }
+
+    .qb-radar:hover { background: rgba(15,110,86,0.4); color: #fff; transform: translateY(-1px); }
+
+    .qb-prep {
+      background: rgba(59,109,17,0.2);
+      border: 1px solid rgba(59,109,17,0.45);
+      color: #9de05a;
+    }
+
+    .qb-prep:hover { background: rgba(59,109,17,0.4); color: #fff; transform: translateY(-1px); }
+
+    .qb-sep {
+      color: rgba(255,255,255,0.15);
+      font-size: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-quickbar-label { display: none; }
+      .nav-quickbar-inner { gap: 6px; }
+    }
 
     .hamburger {
       display: none;
@@ -1003,6 +1087,8 @@
       <li><a href="#regimes">MEI · ME · EPP</a></li>
       <li><a href="#mercadolivre">Mercado Livre</a></li>
       <li><a href="#reputacao">Reputação</a></li>
+      <li><a href="#radar-siscomex" class="nav-radar">📡 Radar/Siscomex</a></li>
+      <li><a href="#prep-center" class="nav-prep">🏭 Prep Center</a></li>
       <li><a href="#calculadora" class="nav-calc">🧮 Calculadora</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -1015,9 +1101,21 @@
     <a href="#regimes" onclick="closeMobile()">MEI · ME · EPP</a>
     <a href="#mercadolivre" onclick="closeMobile()">Mercado Livre</a>
     <a href="#reputacao" onclick="closeMobile()">Reputação</a>
+    <a href="#radar-siscomex" onclick="closeMobile()" style="color:#5de8be;">📡 Radar / Siscomex</a>
+    <a href="#prep-center" onclick="closeMobile()" style="color:#9de05a;">🏭 Prep Center</a>
     <a href="#calculadora" onclick="closeMobile()" style="color:var(--gold);">🧮 Calculadora (em breve)</a>
   </div>
 </nav>
+
+<!-- QUICK ACCESS BAR -->
+<div class="nav-quickbar">
+  <div class="nav-quickbar-inner">
+    <span class="nav-quickbar-label">Acesso rápido</span>
+    <a href="#radar-siscomex" class="qb-radar">📡 Radar / Siscomex</a>
+    <span class="qb-sep">·</span>
+    <a href="#prep-center" class="qb-prep">🏭 Prep Center SP</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="topo">
@@ -1294,16 +1392,16 @@
       </div>
     </div>
 
-    <!-- 13. FORMAL DIFERENÇAS -->
-    <div class="card t-navy" id="formal-dif">
+    <!-- 13. FORMAL DIFERENÇAS + RADAR SISCOMEX -->
+    <div class="card t-navy" id="radar-siscomex" style="scroll-margin-top:100px;">
       <div class="card-head">
-        <div class="card-icon">🔄</div>
-        <div class="card-title">Importação Formal — Diferenças</div>
+        <div class="card-icon">📡</div>
+        <div class="card-title">Radar / Siscomex — Importação Formal e Modalidades</div>
         <div class="card-num">13</div>
       </div>
       <div class="card-body">
         <div class="item"><div class="item-num">▸</div><div class="item-text"><strong>Despachante aduaneiro</strong> obrigatório (R$ 500–R$ 2.000/processo)</div></div>
-        <div class="item"><div class="item-num">▸</div><div class="item-text"><strong>Radar Siscomex</strong> obrigatório</div></div>
+        <div class="item"><div class="item-num">▸</div><div class="item-text"><strong>Radar Siscomex</strong> obrigatório — habilitação do CNPJ para importar formalmente</div></div>
         <div class="item"><div class="item-num">▸</div><div class="item-text">Modal <strong>aéreo ou marítimo</strong></div></div>
         <div class="item"><div class="item-num">▸</div><div class="item-text">Documento: <strong>DI / DUIMP</strong> — DUIMP obrigatória em SP desde abr/2026</div></div>
         <div class="item"><div class="item-num">▸</div><div class="item-text">II <strong>varia por NCM</strong> — pode ser menor que 60% da simplificada</div></div>
@@ -1315,11 +1413,18 @@
             <tr><td><strong>Ilimitada</strong></td><td>Exige comprovação financeira</td></tr>
           </table>
         </div>
+        <div class="hl hl-teal" style="margin-top:10px;">
+          <strong>Importação Simplificada:</strong> não exige Radar Siscomex nem despachante. Limite de US$ 3.000/remessa e US$ 50.000/semestre (Radar Expresso automático).<br>
+          <strong>Importação Formal:</strong> exige habilitação no Radar antes de importar. Modalidade Expressa é concedida automaticamente para MEI/ME pequenas.
+        </div>
       </div>
     </div>
 
+    <!-- ANCHOR SEPARADO PARA SCROLL PRECISO -->
+    <div id="formal-dif"></div>
+
     <!-- 9. PREP CENTER -->
-    <div class="card t-green" id="prep">
+    <div class="card t-green" id="prep-center" style="scroll-margin-top:100px;">
       <div class="card-head">
         <div class="card-icon">🏭</div>
         <div class="card-title">Prep Center — São Paulo</div>
