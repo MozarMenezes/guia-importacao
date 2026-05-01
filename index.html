@@ -1067,6 +1067,27 @@
       .ml-types { grid-template-columns: 1fr; }
       .rep-pill { min-width: 40px; font-size: 9px; }
     }
+    /* ── SIMPLES NACIONAL MOBILE FIXES ── */
+    .simples-grid { grid-template-columns: 1fr; }
+
+    @media (min-width: 900px) {
+      .simples-grid { grid-template-columns: 1.5fr 1fr; }
+    }
+
+    .simples-tbl { font-size: 12px; }
+    .simples-tbl th, .simples-tbl td { padding: 7px 8px; white-space: nowrap; }
+
+    .formula-simples { word-break: break-word; }
+    .formula-simples span { white-space: normal; word-break: break-word; }
+
+    @media (max-width: 600px) {
+      .col-deduzir { display: none; }
+      .simples-tbl { font-size: 11px; }
+      .simples-tbl th, .simples-tbl td { padding: 6px 7px; }
+      .formula { word-break: break-word; font-size: 12px; }
+      .formula span { white-space: normal; }
+      .icms-eq { font-size: 12px; word-break: break-word; }
+    }
   </style>
 </head>
 <body>
@@ -1499,66 +1520,66 @@
         <div class="card-num">11</div>
       </div>
       <div class="card-body">
-        <div class="grid">
+        <div class="grid simples-grid">
           <div>
             <div class="tbl-wrap">
-              <table>
+              <table class="simples-tbl">
                 <tr>
                   <th>Faixa</th>
                   <th>Regime</th>
                   <th>Receita 12 meses</th>
                   <th>Alíq. Nominal</th>
-                  <th>Parcela Deduzir</th>
+                  <th class="col-deduzir">Parcela Deduzir</th>
                 </tr>
                 <tr class="row-me">
                   <td>1ª</td>
                   <td><span class="badge badge-me">ME</span></td>
                   <td>Até R$ 180.000</td>
                   <td><strong>4,00%</strong></td>
-                  <td>—</td>
+                  <td class="col-deduzir">—</td>
                 </tr>
                 <tr class="row-me">
                   <td>2ª</td>
                   <td><span class="badge badge-me">ME</span></td>
                   <td>Até R$ 360.000</td>
                   <td><strong>7,30%</strong></td>
-                  <td>R$ 5.940,00</td>
+                  <td class="col-deduzir">R$ 5.940</td>
                 </tr>
                 <tr class="row-epp">
                   <td>3ª</td>
                   <td><span class="badge badge-epp">EPP</span></td>
                   <td>Até R$ 720.000</td>
                   <td><strong>9,50%</strong></td>
-                  <td>R$ 13.860,00</td>
+                  <td class="col-deduzir">R$ 13.860</td>
                 </tr>
                 <tr class="row-epp">
                   <td>4ª</td>
                   <td><span class="badge badge-epp">EPP</span></td>
                   <td>Até R$ 1.800.000</td>
                   <td><strong>10,70%</strong></td>
-                  <td>R$ 22.500,00</td>
+                  <td class="col-deduzir">R$ 22.500</td>
                 </tr>
                 <tr class="row-epp">
                   <td>5ª</td>
                   <td><span class="badge badge-epp">EPP</span></td>
                   <td>Até R$ 3.600.000</td>
                   <td><strong>14,30%</strong></td>
-                  <td>R$ 87.300,00</td>
+                  <td class="col-deduzir">R$ 87.300</td>
                 </tr>
                 <tr class="row-epp">
                   <td>6ª</td>
                   <td><span class="badge badge-epp">EPP</span></td>
                   <td>Até R$ 4.800.000</td>
                   <td><strong>19,00%</strong></td>
-                  <td>R$ 378.000,00</td>
+                  <td class="col-deduzir">R$ 378.000</td>
                 </tr>
               </table>
             </div>
           </div>
           <div>
-            <div class="formula">
+            <div class="formula formula-simples">
               ALÍQUOTA EFETIVA<br>
-              <span>(RBT12 × alíq. nominal − parcela a deduzir) ÷ RBT12</span>
+              <span>(RBT12 × alíq. nominal<br>− parcela a deduzir)<br>÷ RBT12</span>
             </div>
             <div class="hl hl-teal" style="margin-top:10px;">
               ✓ DAS vence todo dia <strong>20</strong><br>
@@ -1745,9 +1766,12 @@
       <strong>Mozar Lacerda de Menezes</strong><br>
       Campo Grande/MS · Empresa em Jundiaí/SP<br>
       <br>
-      Guia de Importação e Vendas E-Commerce · Abril/2026<br>
+      Guia de Importação e Vendas E-Commerce<br>
       Material de referência pessoal · Revisão periódica recomendada<br>
-      ⚠️ Não substitui orientação profissional de contador ou despachante aduaneiro.
+      ⚠️ Não substitui orientação profissional de contador ou despachante aduaneiro.<br>
+      <br>
+      <span id="footer-copyright" style="color:rgba(255,255,255,0.35); font-size:11px;"></span><br>
+      <span id="footer-version" style="color:rgba(255,255,255,0.25); font-size:10px; letter-spacing:0.5px; font-family: monospace;"></span>
     </div>
   </div>
 </footer>
@@ -1818,6 +1842,31 @@
   }, { rootMargin: '-60px 0px -70% 0px' });
 
   sections.forEach(s => observer.observe(s));
+
+  // ── VERSÃO AUTOMÁTICA E COPYRIGHT DINÂMICO ──
+  (function() {
+    const now = new Date();
+
+    // Formata data/hora no padrão DDMMAAAA.HH.MM.SS (horário de Brasília UTC-3)
+    const brt = new Date(now.getTime() - 3 * 60 * 60 * 1000);
+    const pad = n => String(n).padStart(2, '0');
+    const dd   = pad(brt.getUTCDate());
+    const mm   = pad(brt.getUTCMonth() + 1);
+    const aaaa = brt.getUTCFullYear();
+    const hh   = pad(brt.getUTCHours());
+    const mi   = pad(brt.getUTCMinutes());
+    const ss   = pad(brt.getUTCSeconds());
+
+    const versao = `${dd}${mm}${aaaa}.${hh}.${mi}.${ss}`;
+
+    // Copyright com ano dinâmico
+    const ano = brt.getUTCFullYear();
+    document.getElementById('footer-copyright').textContent =
+      `© Copyright ${ano}. Todos os Direitos Reservados.`;
+
+    document.getElementById('footer-version').textContent =
+      `Versão: ${versao}`;
+  })();
 </script>
 
 </body>
